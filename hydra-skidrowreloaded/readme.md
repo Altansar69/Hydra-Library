@@ -2,4 +2,9 @@ This is a scrap of all the site: [Skidrow & Reloaded](https://www.skidrowreloade
 
 Only links from these hosts were taken: 1fichier, MEGA, Pixeldrain, MediaFire, Gofile, DataNodes, QIWI and magnet link.
 
-The Python script to scrape the entire site and create the json is also available here.
+The Python script to scrape the entire site and create the JSON is also available here.
+
+
+# Invalid JSON
+There may be errors in the JSON. In particular, games with no links or `null` sizes. You can test your JSON with `validate_json.bat`. You can either correct it manually or use `remove_empty_uris.py` to delete all lines with no links. It will give you `skidrow_cleaned.json`. For `null` sizes, there are relatively few, so you can correct them manually.
+As long as `validate_json.bat` does not tell you that the JSON is valid, it will not be usable.

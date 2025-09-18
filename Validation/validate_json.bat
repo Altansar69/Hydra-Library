@@ -1,0 +1,1 @@
+cmd /k npx ts-node validate.ts

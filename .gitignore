@@ -13,3 +13,6 @@ hydra-kevin/normalized.json
 
 # GamesTorrents
 hydra-gamestorrents/temp.torrent
+
+# Node
+node_modules/
