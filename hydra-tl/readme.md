@@ -1,4 +1,4 @@
-This is a scrap from TorrentLeech's PC video games dated 14-09-2025 in the form of a json compatible with [Hydra](https://github.com/hydralauncher/hydra).
+This is a scrap from TorrentLeech's PC video games dated 14-09-2025 in the form of a json compatible with [Hydra](https://github.com/hydralauncher/hydra). It contains approximately 53,000 games.
 It contains the various scripts needed to do this. 
 `torrents_magnets_without_trackers.json` contains a list of games with their magnet links but cannot be used because it does not contain the tracker link. Since TorrentLeech is a private tracker, the tracker link contains a private passkey. To obtain a usable JSON file, please follow [the steps below](#want-usable-json-for-hydra). 
 
