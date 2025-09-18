@@ -1,6 +1,10 @@
 import json
 from datetime import datetime
 
+# CONFIG
+INPUT_FILE = "to_normalized.json"
+OUTPUT_FILE = "normalized.json"
+
 def human_readable_size(size_bytes: int) -> str:
     """Converts a size in bytes to a readable format (KB, MB, GB, TB)"""
     if size_bytes == 0:
@@ -24,11 +28,8 @@ def transform_game(item: dict) -> dict:
     }
 
 if __name__ == "__main__":
-    input_file = "to_normalized.json"
-    output_file = "normalized.json"
-
-    with open(input_file, "r", encoding="utf-8") as f_in, \
-         open(output_file, "w", encoding="utf-8") as f_out:
+    with open(INPUT_FILE, "r", encoding="utf-8") as f_in, \
+         open(OUTPUT_FILE, "w", encoding="utf-8") as f_out:
 
         raw_data = json.load(f_in)
 

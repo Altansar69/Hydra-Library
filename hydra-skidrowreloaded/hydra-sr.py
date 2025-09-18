@@ -3,7 +3,11 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import json
 
+# CONFIG
 BASE_URL = "https://www.skidrowreloaded.com/pc/?lcp_page1={}"
+START_PAGE = 1
+END_PAGE = 536
+OUTPUT_FILE = "skidrow.json"
 
 def parse_game_page(url):
     r = requests.get(url)
@@ -58,10 +62,10 @@ def parse_main_page(page_number):
     return games
 
 def scrape_all_pages(max_pages):
-    with open("skidrow4.json", "w", encoding="utf-8") as f:
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write('{"name": "SkidrowReloaded", "downloads": [\n')
         first = True
-        page_number = 1
+        page_number = START_PAGE
         
         while page_number <= max_pages:
             print(f"Scraping page {page_number}/{max_pages}...")
@@ -80,4 +84,4 @@ def scrape_all_pages(max_pages):
     print("Scraping completed. File skidrow.json created.")
 
 if __name__ == "__main__":
-    scrape_all_pages(863)
+    scrape_all_pages(END_PAGE)

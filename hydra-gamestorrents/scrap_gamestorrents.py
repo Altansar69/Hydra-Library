@@ -7,9 +7,14 @@ import subprocess
 import os
 import re
 
+# CONFIG
 BASE_URL = "https://www.gamestorrents.app/juegos-pc/page/{}/"
 DOMAIN = "https://www.gamestorrents.app"
-TORRENT2MAGNET_SCRIPT = "../torrent2magnet/torrent2magnet.py"
+TORRENT2MAGNET = "../torrent2magnet/torrent2magnet.py"
+START_PAGE = 1
+END_PAGE = 536
+OUTPUT_FILE = "gamestorrents.json"
+NAME_MODE = "torrent" # 'listing' or 'torrent'
 
 def get_magnet_from_torrent(torrent_url):
     """Download torrent temporarily and convert to magnet using torrent2magnet.py"""
@@ -23,7 +28,7 @@ def get_magnet_from_torrent(torrent_url):
                 f.write(chunk)
 
     result = subprocess.run(
-        ["python", TORRENT2MAGNET_SCRIPT, local_filename],
+        ["python", TORRENT2MAGNET, local_filename],
         capture_output=True, text=True
     )
     magnet_link = result.stdout.strip()
@@ -117,11 +122,11 @@ def scrape_game_page(url, name_mode="torrent", base_name=None):
 def scrape_all_pages(max_pages, name_mode="torrent"):
     # Old torrent from gamestorrents, don't have proper name.
     # For them, go use name_mode "listing"
-    with open("gamestorrents2.json", "w", encoding="utf-8") as f:
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write('{"name": "GamesTorrent", "downloads": [\n')
         first = True
         
-        for page in range(100, max_pages+1):
+        for page in range(START_PAGE, max_pages+1):
             print(f"Scraping page {page}/{max_pages}...")
             url = BASE_URL.format(page)
             r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -151,5 +156,5 @@ def scrape_all_pages(max_pages, name_mode="torrent"):
 
 
 if __name__ == "__main__":
-    scrape_all_pages(396, name_mode="listing")
-    print("Scraping completed. File gamestorrents.json created with magnet links.")
+    scrape_all_pages(END_PAGE, name_mode=NAME_MODE)
+    print(f"Scraping completed. File {OUTPUT_FILE} created with magnet links.")
