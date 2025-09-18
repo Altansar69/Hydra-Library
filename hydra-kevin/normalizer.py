@@ -2,8 +2,8 @@ import json
 from datetime import datetime
 
 # CONFIG
-INPUT_FILE = "to_normalized.json"
-OUTPUT_FILE = "normalized.json"
+INPUT_FILE = "json_to_normalize.json"
+OUTPUT_FILE = "json_normalized.json"
 
 def human_readable_size(size_bytes: int) -> str:
     """Converts a size in bytes to a readable format (KB, MB, GB, TB)"""
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
         raw_data = json.load(f_in)
 
-        f_out.write('{\n  "name": "kevinj93 Complete Collection (Scene + GOG),\n  "downloads": [\n')
+        f_out.write('{\n  "name": "kevinj93 Complete Collection (Scene + GOG)",\n  "downloads": [\n')
 
         for idx, item in enumerate(raw_data, start=1):
             game = transform_game(item)
