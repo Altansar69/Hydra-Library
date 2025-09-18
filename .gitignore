@@ -1,0 +1,6 @@
+# torrent2magnet
+torrent2magnet/
+
+# TorrentLeech
+hydra-tl/torrents.json
+hydra-tl/usable_json_with_magnets_and_passkey.json
