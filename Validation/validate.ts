@@ -1,7 +1,9 @@
 import { downloadSourceSchema } from './schemas';
 import * as fs from 'fs'
 
-const rawData = fs.readFileSync('../hydra-skidrowreloaded/skidrow_cleaned.json', 'utf-8');
+//const fileToTest = '../hydra-skidrowreloaded/skidrow_cleaned.json'
+const fileToTest = '../hydra-kevin/combined.json'
+const rawData = fs.readFileSync(fileToTest, 'utf-8');
 const jsonData = JSON.parse(rawData);
 
 try

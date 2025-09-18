@@ -17,7 +17,7 @@ for file_name in json_files:
         merged_downloads.extend(data.get("downloads", []))
 
 
-with open("merged.json", "w", encoding="utf-8") as f:
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     f.write('{\n  "name": "kevinj93 Complete Collection (Combined)",\n  "downloads": [\n')
     for i, item in enumerate(merged_downloads):
         json_line = json.dumps(item, ensure_ascii=False)
